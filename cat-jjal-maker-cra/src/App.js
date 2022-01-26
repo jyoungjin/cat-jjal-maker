@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
 import Title from "./components/Title";
+import MainCard from "./components/MainCard";
 
 const jsonLocalStorage = {
   setItem: (key, value) => {
@@ -79,16 +80,6 @@ function Favorites({ favorites }) {
     </ul>
   );
 }
-
-const MainCard = ({ img, onHeartClick, alreadyFavorite }) => {
-  const heartIcon = alreadyFavorite ? "💖" : "🤍";
-  return (
-    <div className="main-card">
-      <img src={img} alt="고양이" width="400" />
-      <button onClick={onHeartClick}>{heartIcon}</button>
-    </div>
-  );
-};
 
 const App = () => {
   const CAT1 = "https://cataas.com/cat/60b73094e04e18001194a309/says/react";
