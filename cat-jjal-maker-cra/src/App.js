@@ -3,6 +3,7 @@ import "./App.css";
 import React from "react";
 import Title from "./components/Title";
 import MainCard from "./components/MainCard";
+import Form from "./components/Form";
 
 const jsonLocalStorage = {
   setItem: (key, value) => {
@@ -18,45 +19,6 @@ const fetchCat = async (text) => {
   const response = await fetch(`${OPEN_API_DOMAIN}/cat/says/${text}?json=true`);
   const responseJson = await response.json();
   return `${OPEN_API_DOMAIN}/${responseJson.url}`;
-};
-
-const Form = ({ updateMainCat }) => {
-  const includesHangul = (text) => /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/i.test(text);
-  const [value, setValue] = React.useState("");
-  const [errorMessage, setErrorMessage] = React.useState("");
-
-  function handleInputChange(e) {
-    const userValue = e.target.value;
-    setErrorMessage("");
-    if (includesHangul(userValue)) {
-      setErrorMessage("한글은 입력할 수 없습니다.");
-    }
-    setValue(userValue.toUpperCase());
-  }
-
-  function handleFormSubmit(e) {
-    e.preventDefault();
-    setErrorMessage("");
-    if (value === "") {
-      setErrorMessage("빈 값으로 만들 수 없습니다.");
-      return;
-    }
-    updateMainCat(value);
-  }
-
-  return (
-    <form onSubmit={handleFormSubmit}>
-      <input
-        type="text"
-        name="name"
-        value={value}
-        placeholder="영어 대사를 입력해주세요"
-        onChange={handleInputChange}
-      />
-      <button type="submit">생성</button>
-      <p style={{ color: "red" }}>{errorMessage}</p>
-    </form>
-  );
 };
 
 function CatItem(props) {
