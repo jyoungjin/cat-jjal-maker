@@ -4,6 +4,7 @@ import React from "react";
 import Title from "./components/Title";
 import MainCard from "./components/MainCard";
 import Form from "./components/Form";
+import CatItem from "./components/CatItem";
 
 const jsonLocalStorage = {
   setItem: (key, value) => {
@@ -20,14 +21,6 @@ const fetchCat = async (text) => {
   const responseJson = await response.json();
   return `${OPEN_API_DOMAIN}/${responseJson.url}`;
 };
-
-function CatItem(props) {
-  return (
-    <li>
-      <img src={props.img} style={{ width: "150px" }} />
-    </li>
-  );
-}
 
 function Favorites({ favorites }) {
   if (favorites.length === 0) {
