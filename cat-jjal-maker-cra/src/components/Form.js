@@ -1,3 +1,5 @@
+import React from "react";
+
 const Form = ({ updateMainCat }) => {
   const includesHangul = (text) => /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/i.test(text);
   const [value, setValue] = React.useState("");
