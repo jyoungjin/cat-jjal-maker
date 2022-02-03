@@ -54,7 +54,6 @@ const App = () => {
 
   async function setInitialCat() {
     const newCat = await fetchCat("First cat");
-    console.log(newCat);
     setMainCatImage(newCat);
   }
 
